@@ -12,6 +12,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 public class LearnSpringFrameworkApplication {
 
 	public static void main(String[] args) {
+		// When launching SpringApplicationContext, spring framework creates an instance for all the components
 		// context will manage all Beans
 		ConfigurableApplicationContext context = SpringApplication.run(LearnSpringFrameworkApplication.class, args);
 //		GamingConsole game = new MarioGame();
@@ -20,7 +21,8 @@ public class LearnSpringFrameworkApplication {
 //
 //		game = new SuperContraGame();
 //		runner = new GameRunner(game);
-		context.getBean();
+		// Getting one of the bean instances from the context
+		GameRunner runner = context.getBean(GameRunner.class);
 		runner.run();
 
 	}
