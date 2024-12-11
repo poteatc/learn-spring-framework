@@ -8,26 +8,16 @@ import java.util.List;
 
 @Component
 public class MyWebController {
+    //@Autowired
+    private final BusinessService businessService;
+
     @Autowired
-    private BusinessService businessService;
+    public MyWebController(BusinessService businessService) {
+        this.businessService = businessService;
+    }
 
     public long returnValueFromBusinessService() {
         return businessService.calculateSum();
     }
 }
 
-@Component
-class BusinessService {
-    @Autowired
-    private DataService dataService;
-    public long calculateSum() {
-        return dataService.getData().stream().reduce(0, Integer::sum);
-    }
-}
-
-@Component
-class DataService {
-    public List<Integer> getData() {
-        return Arrays.asList(10, 20, 30, 40);
-    }
-}
